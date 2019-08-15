@@ -1,0 +1,10 @@
+sudo: required
+services:
+        - docker
+
+before_install:
+        - docker build -t jozef-nemcok/docker-onlinecourse -f Dockerfile.dev .
+
+
+script:
+        - docker run -e CI=true jozef-nemcok/docker-onlinecourse npm run test

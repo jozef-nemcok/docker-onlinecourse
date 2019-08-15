@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm config set proxy http://proxy-pdb.wincor-nixdorf.com:81
+RUN npm config set https-proxy http://proxy-pdb.wincor-nixdorf.com:81
+RUN npm install 
+
+COPY . . 
+
+
+CMD ["npm", "run", "start"]
